@@ -24,6 +24,7 @@ import wite2 from "./wite2.jpg";
 import wite3 from "./wite3.jpg";
 import wite4 from "./wite4.jpg";
 import logo from "./logo.png";
+import paystack from "./paystack.png";
 
 import cart_icon from "./cart_icon.png";
 import bin_icon from "./bin_icon.png";
@@ -44,6 +45,7 @@ import cross_icon from "./cross_icon.png";
 
 export const assets = {
   logo,
+  paystack,
   contactt_img,
   cart_icon,
   dropdown_icon,
@@ -118,7 +120,7 @@ export const products = [
   },
   {
     _id: "aaaaf",
-    name: "Girls Round Neck Cotton Top",
+    name: " op",
     description:
       "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
     price: 140,
@@ -157,7 +159,59 @@ export const products = [
   },
   {
     _id: "aaaah",
-    name: "Men Round Neck Pure Cotton T-shirt",
+    name: "Men Round ",
+    description:
+      "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+    price: 144,
+    image: [wite4],
+    category: "Men",
+    subCategory: "Topwear",
+    sizes: ["S", "M", "L", "XL"],
+    date: 1716622345448,
+    recomendation: false,
+  },
+  {
+    _id: "aaaaaxxh",
+    name: "Men Round ",
+    description:
+      "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+    price: 140,
+    image: [r2],
+    category: "Men",
+    subCategory: "Topwear",
+    sizes: ["S", "M", "L", "XL"],
+    date: 1716622345448,
+    recomendation: false,
+  },
+  {
+    _id: "akaaah",
+    name: "Men Round ",
+    description:
+      "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+    price: 140,
+    image: [r3],
+    category: "Men",
+    subCategory: "Topwear",
+    sizes: ["S", "M", "L", "XL"],
+    date: 1716622345448,
+    recomendation: false,
+  },
+  {
+    _id: "aajaah",
+    name: "Men Round ",
+    description:
+      "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+    price: 140,
+    image: [r4],
+    category: "Women",
+    subCategory: "Bottomwear",
+    sizes: ["S", "M", "L", "XL"],
+    date: 1716622345448,
+    recomendation: false,
+  },
+  {
+    _id: "aaanah",
+    name: "Men Round ",
     description:
       "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
     price: 140,

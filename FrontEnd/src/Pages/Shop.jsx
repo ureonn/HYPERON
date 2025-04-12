@@ -15,6 +15,7 @@ const Shop = () => {
   const { products, search, showSearch } = useContext(ShopContext);
   const [showCategory, setShowCategory] = useState(false);
   const [categoryProducts, setCategoryProducts] = useState([]);
+
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("related");
@@ -53,37 +54,42 @@ const Shop = () => {
   };
 
   const applyFilter = () => {
-    let productsCopy = products.slice();
+    let filtered = products.slice();
 
-    // Apply search filter if there's an active search term
     if (showSearch && search) {
-      productsCopy = productsCopy.filter((item) =>
+      filtered = filtered.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    // Apply category filters
     if (category.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        category.includes(item.category)
-      );
+      filtered = filtered.filter((item) => category.includes(item.category));
     }
 
-    // Apply subcategory filters
     if (subCategory.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
+      filtered = filtered.filter((item) =>
         subCategory.includes(item.subCategory)
       );
     }
 
-    // Update filtered products
-    setCategoryProducts(productsCopy);
+    // Sorting inside filter
+    if (sortType === "low-high") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortType === "high-low") {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+
+    setCategoryProducts(filtered);
+  };
+
+  const clearAllFilters = () => {
+    setCategory([]);
+    setSubCategory([]);
+    setSortType("related");
   };
 
   useEffect(() => {
-    applyFilter(); // Apply filtering logic first
-
-    sortProduct(); // Then apply sorting logic based on selected sort type
+    applyFilter();
   }, [category, subCategory, products, search, showSearch, sortType]);
 
   return (
@@ -108,6 +114,7 @@ const Shop = () => {
         >
           {/* Filter Options */}
           <select
+            value={sortType}
             onChange={(e) => setSortType(e.target.value)}
             className="border outline-none mb-3 w-full border-r-gray-900 text-sm  bg-[url(PI.jpeg)] rounded-xl"
           >
@@ -200,12 +207,7 @@ const Shop = () => {
           </div>
           <button
             className="text-[12px] mt-4 font-mono border bg-black text-white px-6 rounded"
-            onClick={() => {
-              setCategory([]);
-              setSubCategory([]);
-              setSortType("related");
-              console.log(setSortType);
-            }}
+            onClick={clearAllFilters}
           >
             Clear All Filters
           </button>
@@ -218,15 +220,21 @@ const Shop = () => {
         </div>
         {/* Map Products */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
-          {categoryProducts.map((item, index) => (
-            <ProductItems
-              key={index}
-              name={item.name}
-              id={item._id}
-              price={item.price}
-              image={item.image}
-            />
-          ))}
+          {categoryProducts.length === 0 ? (
+            <p className="text-gray-600 col-span-full text-center text-xl font-medium">
+              No products found.
+            </p>
+          ) : (
+            categoryProducts.map((item, index) => (
+              <ProductItems
+                key={index}
+                name={item.name}
+                id={item._id}
+                price={item.price}
+                image={item.image}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>

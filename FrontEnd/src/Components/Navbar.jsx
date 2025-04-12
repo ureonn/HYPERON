@@ -5,7 +5,8 @@ import { ShopContext } from "../Context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount, getWishlistCount } =
+    useContext(ShopContext);
   return (
     <div className="flex justify-between items-center px-3 gap-2 sm:px-[3vw] py-4 bg-transparent fixed top-0 left-0 right-0 z-40  ">
       {/* Navv rigt side */}
@@ -20,28 +21,28 @@ const Navbar = () => {
         <ul className="hidden lg:flex gap-6 ">
           <NavLink
             to="/"
-            className="flex flex-col items-center  text-xm font-medium text-gray-100"
+            className="flex flex-col items-center  text-xm font-medium text-white"
           >
             <p>home</p>
             <hr className="w-1/2 border-none h-[1.5px] bg-gray-700 hidden" />
           </NavLink>
           <NavLink
             to="/shop"
-            className="flex flex-col items-center  text-xm font-medium text-gray-100"
+            className="flex flex-col items-center  text-xm font-medium text-white"
           >
             <p>shop</p>
             <hr className="w-1/2 border-none h-[1.5px] bg-gray-700 hidden" />
           </NavLink>
           <NavLink
             to="/blog"
-            className="flex flex-col items-center text-xm font-medium text-gray-100 "
+            className="flex flex-col items-center text-xm font-medium text-white "
           >
             <p>blog</p>
             <hr className="w-1/2 border-none h-[1.5px] bg-gray-700 hidden" />
           </NavLink>
           <NavLink
             to="/about"
-            className="flex flex-col items-center text-xm font-medium text-gray-100 "
+            className="flex flex-col items-center text-xm font-medium text-white"
           >
             <p>about</p>
             <hr className="w-1/2 border-none h-[1.5px] bg-gray-700 hidden" />
@@ -53,27 +54,27 @@ const Navbar = () => {
       <div className="flex gap-6">
         <h1
           onClick={() => setShowSearch(true)}
-          className="relative text-xm font-medium text-gray-100  flex gap-1 cursor-pointer"
+          className="relative text-xm font-medium text-white flex gap-1 cursor-pointer"
         >
           search
         </h1>
         <Link
           to="/wishList"
-          className="relative text-xm font-medium text-gray-100  flex gap-1"
+          className="relative text-xm font-medium text-white  flex gap-1"
         >
           <p>wishList</p>
-          <p>(0)</p>
+          <p>({getWishlistCount()})</p>
         </Link>
 
         <Link
           to="/cart"
-          className="relative   text-xm font-medium text-gray-100  flex gap-1"
+          className="relative   text-xm font-medium text-white flex gap-1"
         >
           <p>cart</p>
-          <p>(0)</p>
+          <p>({getCartCount()})</p>
         </Link>
         <div className="group relative">
-          <p className="cursor-pointer  text-xm font-medium text-gray-100">
+          <p className="cursor-pointer  text-xm font-medium text-white">
             profile
           </p>
           <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">

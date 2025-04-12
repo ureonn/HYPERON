@@ -10,16 +10,17 @@ import Contact from "./Pages/Contact";
 import PlaceOrder from "./Pages/PlaceOrder";
 import Shop from "./Pages/Shop";
 import Orders from "./Pages/Orders";
-import WishList from "./Pages/WishList";
+import Wishlist from "./Pages/Wishlist";
 import Product from "./Pages/Product";
 import Login from "./Pages/Login";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
-
+import { ToastContainer, toast } from "react-toastify";
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Navbar />
       <SearchBar />
       <Routes>
@@ -31,7 +32,7 @@ const App = () => {
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/login" element={<Login />} />
       </Routes>
